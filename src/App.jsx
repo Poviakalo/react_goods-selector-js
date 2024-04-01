@@ -1,6 +1,7 @@
 import 'bulma/css/bulma.css';
 import './App.scss';
-import React from 'react';
+
+import { useState } from 'react';
 import cn from 'classnames';
 
 export const goods = [
@@ -17,7 +18,11 @@ export const goods = [
 ];
 
 export const App = () => {
-  const [selectedGood, setSelectedGood] = React.useState('Jam');
+  const [selectedGood, setSelectedGood] = useState('Jam');
+
+  const resetGood = () => {
+    setSelectedGood(null);
+  };
 
   return (
     <main className="section container">
@@ -32,7 +37,7 @@ export const App = () => {
             data-cy="ClearButton"
             type="button"
             className="delete ml-3"
-            onClick={() => setSelectedGood(null)}
+            onClick={resetGood}
           />
         </h1>
       )}
@@ -63,7 +68,7 @@ export const App = () => {
                       data-cy="removeButton"
                       type="button"
                       className="button"
-                      onClick={() => setSelectedGood(null)}
+                      onClick={resetGood}
                     >
                       -
                     </button>
